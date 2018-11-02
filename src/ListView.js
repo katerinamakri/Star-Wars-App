@@ -3,13 +3,12 @@ import './App.css';
 
 class ListView extends Component {
 
-// onClick={() => this.props.fetchCardData(card.cardName)}
 	render() {
 		return (
 			<div className="list-container">
 				<ul className="list" >
 					{this.props.movieList.map( (movie, index) => (
-						<li key={index} > 
+						<li key={index} onClick={() => this.props.movieSelection(index)}> 
 							<p> 
 								<span className='episode_id'>EPISODE {movie.fields.episode_id}</span>
 								<span className='movie-title'>{movie.fields.title}</span>
