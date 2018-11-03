@@ -3,8 +3,6 @@ import './App.css';
 
 class Search extends Component {
 
-
-
 	render() {
 		let toggleButton = this.props.isDropdownOpen ? "block" : "none";
 	
@@ -13,12 +11,14 @@ class Search extends Component {
 				<div className="dropdown" >
 					<button onClick={() => this.props.toggleButton()}> Sort by... </button>
 					<ul className="dropdown-content" style={{ display: toggleButton }}>
-						<p> Sort by </p>
-					  <li onClick={() => this.props.sortByEpisode(this.value)}> Episode </li>
-  					<li> Year </li>
+						<div className="dropdown-paragraph-container"> 
+							<p> Sort by </p>
+							<button className='close-button' onClick={() => this.props.toggleButton()}> X </button>
+						</div>
+					  <li onClick={() => this.props.sortByEpisode()}> Episode </li>
+  					<li onClick={() => this.props.sortByYear()}> Year </li>
   				</ul>
 				</div>
-
 				<div className="search-movies-container">
 					<i className="fas fa-search"></i>
 					<input 
