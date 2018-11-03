@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 .App {
   text-align: center;
 }
@@ -44,7 +48,7 @@ select {
 
 .search-input-movies {
   padding: 10px 10px 10px 25px;
-  width: 98%;
+  width: 97%;
   border: 1px solid rgb(227, 231, 234);
   border-radius: 3px;
 }
