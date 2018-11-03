@@ -56,8 +56,9 @@ select {
 */
 
 .list-container {
-  border-right: 1px solid #999;
+  border-right: 1px solid rgb(227, 231, 234);
   padding: 0;
+  height: 100vh;
 /*  text-align: right;*/
   width: 50%;
 }
@@ -74,8 +75,8 @@ li {
   padding: 15px;
   cursor: pointer;
   line-height: 2;
-  color: #1c262f;
-  border-bottom: 1px solid black;
+  color: rgb(66, 90, 111);
+  border-bottom: 1px solid rgb(227, 231, 234);
 }
 
 
@@ -108,7 +109,8 @@ li > p {
 .movie-container {
   flex: 1;
   padding: 30px;
-  text-align: left;  
+  text-align: left;
+  color: rgb(66, 90, 111); 
 }
 
 .movie-container > h2 {
@@ -119,4 +121,5 @@ li > p {
   position: absolute;
   right: 20%;
   top: 50%;
+  color: rgb(66, 90, 111);
 }
