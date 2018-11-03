@@ -42,7 +42,8 @@ button:focus {
   display: none;
   border-radius: 5px;
   border: 1px solid rgb(227, 231, 234);
-  top: 40px;
+  margin: 0;
+  top: 57px;
   list-style: none;
   padding: 0;
   position: absolute;
@@ -53,13 +54,6 @@ button:focus {
   height: 37vh;
 }
 
-.dropdown-content > p {
-  text-align: left;
-  padding: 10px;
-  margin: 0;
-  border-bottom: 1px solid rgb(227, 231, 234);
-}
-
 .dropdown-content > li {
   text-align: left;
   padding: 10px;
@@ -67,6 +61,25 @@ button:focus {
 
 .dropdown-content > li:hover {
   background-color: rgb(248,248,249);
+}
+
+.dropdown-paragraph-container {
+  text-align: left;
+  padding: 10px;
+  margin: 0;
+  border-bottom: 1px solid rgb(227, 231, 234);
+  display: flex;
+  justify-content: space-between;
+}
+.dropdown-paragraph-container > p{
+  margin: 0;
+}
+
+.dropdown-paragraph-container > button {
+  cursor: pointer;
+  padding: 0 12px;
+  border: 0;
+  background-color: #fff;
 }
 
 .search-movies-container {
@@ -85,9 +98,10 @@ button:focus {
 
 .search-input-movies {
   padding: 10px 10px 10px 35px;
-  width: 97%;
+  width: 100%;
   border: 1px solid rgb(227, 231, 234);
   border-radius: 5px;
+  box-sizing: border-box;
 }
 
 /*
