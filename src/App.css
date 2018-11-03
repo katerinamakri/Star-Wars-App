@@ -2,10 +2,6 @@ body {
   overflow: hidden;
 }
 
-.App {
-  text-align: center;
-}
-
 .container {
   position: relative;
   display: flex;
@@ -114,7 +110,6 @@ button:focus {
   border-right: 1px solid rgb(227, 231, 234);
   padding: 0;
   height: 100vh;
-/*  text-align: right;*/
   width: 50%;
 }
 
@@ -140,12 +135,7 @@ li > p {
   display: flex;
 }
 
-/*.episode_id {
-
-}*/
-
 .movie-title {
-  /*flex: 1;*/
   margin-left: 30px;
 }
 
