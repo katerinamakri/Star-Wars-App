@@ -4,8 +4,7 @@ import './App.css';
 class Movie extends Component {
 	render(){
 
-		// this.props.query === '' && this.props.selectedCard.length === 0) ||
-		if ( (this.props.selectedMovie.fields === undefined))  {
+		if ( (this.props.query === '' && this.props.selectedCard.length === 0) || (this.props.selectedMovie.fields === undefined))  {
 			return (
 				<div className="movie-container">
 					<div className="paragraph-container">
@@ -16,7 +15,6 @@ class Movie extends Component {
 		} else {		
 
 			const { title, opening_crawl, director } = this.props.selectedMovie.fields;
-			// console.log(this.props.selectedMovie.fields)
 			
 			return (
 				<div className="movie-container">
