@@ -185,12 +185,16 @@ li > p {
   li {
     text-align: left;
     padding: 10px;
-/*    font-size: 0.8em;*/
   }
 
   li > p {
     margin: 0;
     display: block;
+  }
+
+  .dropdown-content {
+    min-width: 180px;
+    height: 33vh;
   }
 
   .movie-container {
@@ -208,7 +212,7 @@ li > p {
   }
 
   .paragraph-container > p {
-    right: 0;
+    right: 25px;
   }
 }
 
@@ -237,7 +241,7 @@ li > p {
   }
 
   .paragraph-container > p {
-    right: 0;
+    right: 30px;
   }
 }
 
@@ -266,6 +270,6 @@ li > p {
   }
 
   .paragraph-container > p {
-    right: 0;
+    right: 60px;
   }
 }
