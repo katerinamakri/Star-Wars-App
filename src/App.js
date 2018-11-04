@@ -14,7 +14,6 @@ class App extends Component {
       movieList: [],
       selectedMovie:[],
       query:'',
-      isDropdownOpen: false
     }
   }
 
@@ -56,14 +55,13 @@ class App extends Component {
     });    
   }
 
-
   movieSelection = (movie_index) => {
     this.setState({
       selectedMovie: this.state.movieList[movie_index]
     })
   }
 
-  searchingFor = (term) => {    
+  searchingFor = (term) => {
     if (term) {
 
       term = term.toLowerCase();  
@@ -79,7 +77,6 @@ class App extends Component {
       })
 
     } else {
-      console.log(term)
       this.setState ({
         query:'',
         movieList: defaultMovies
@@ -88,12 +85,15 @@ class App extends Component {
   }
 
   sortByEpisode = () => {
-    this.toggleButton();
+
     this.state.movieList.sort((movie1,movie2) => movie1.fields.episode_id - movie2.fields.episode_id)
+
+    this.setState({
+      movieList: this.state.movieList
+    }) 
   }
 
   sortByYear = () => {
-    this.toggleButton();
 
     this.state.movieList.sort(
       (movie1,movie2) => {
@@ -102,18 +102,10 @@ class App extends Component {
         return dateA - dateB
       }
     )
-  }
 
-  toggleButton = () => {
-    if (this.state.isDropdownOpen){
-      this.setState({
-        isDropdownOpen:false
-      })
-    } else {
-      this.setState({
-        isDropdownOpen:true
-      })
-    }
+    this.setState({
+      movieList: this.state.movieList
+    }) 
   }
 
   render() {
@@ -123,8 +115,6 @@ class App extends Component {
           sortByEpisode={this.sortByEpisode}
           sortByYear={this.sortByYear}
           searchingFor={this.searchingFor}
-          isDropdownOpen={this.state.isDropdownOpen}
-          toggleButton={this.toggleButton}
         />
         <div className="container">
           <ListView 
