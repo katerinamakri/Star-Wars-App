@@ -4,130 +4,131 @@ import Search from './Search.js';
 import ListView from './ListView.js';
 import Movie from './Movie.js';
 
-var defaultMovies;
-
 class App extends Component {
-  constructor(props){
-    super(props)
+	constructor(props){
+		super(props)
 
-    this.state = {
-      movieList: [],
-      selectedMovie:[],
-      query:'',
-    }
-  }
+		this.state = {
+			movieList: [],
+			selectedMovie:[],
+			query:'',
+			filteredAndSortedMovieList:[]
+		}
+	}
 
-  componentDidMount(){
-    this.fetchMovieData();
-  }
+	componentDidMount(){
+		this.fetchMovieData();
+	}
 
-  fetchMovieData = () => {
+	fetchMovieData = () => {
 
-    let apiUrl;
+		let apiUrl;
 
-    apiUrl = 'https://star-wars-api.herokuapp.com/films'
+		apiUrl = 'https://star-wars-api.herokuapp.com/films'
 
-    fetch(apiUrl, { 
-      method: 'GET', 
-      headers: {
-        "Content-Type": "application/json"
-      } 
-    })
-    .then((response) => {
+		fetch(apiUrl, { 
+			method: 'GET', 
+			headers: {
+				"Content-Type": "application/json"
+			} 
+		})
+		.then((response) => {
 
-      if (response.status === 404){
-        console.log ('No data')
-      } 
-      return response.json();
-    })
-    .then((results) => {
-       
-      this.setState({
-        movieList: results
-      }) 
-      defaultMovies = results;
+			if (response.status === 404){
+				console.log ('No data')
+			} 
+			return response.json();
+		})
+		.then((results) => {
+			 
+			this.setState({
+				movieList: results,
+				filteredAndSortedMovieList:results
+			})
 
-    })
-    .catch((error) => {
-        // Code for handling errors
-        console.log(error)
-        alert("Sorry. There was an error retrieving the data. Please refer to the console for more information")
-    });    
-  }
+		})
+		.catch((error) => {
+				// Code for handling errors
+				console.log(error)
+				alert("Sorry. There was an error retrieving the data. Please refer to the console for more information")
+		});    
+	}
 
-  movieSelection = (movie_index) => {
-    this.setState({
-      selectedMovie: this.state.movieList[movie_index]
-    })
-  }
+	movieSelection = (movie_index) => {
+		this.setState({
+			selectedMovie: this.state.movieList[movie_index]
+		})
+	}
 
-  searchingFor = (term) => {
-    if (term) {
+	searchingFor = (term) => {
+		if (term) {
+			term = term.toLowerCase();  
+			
+			this.setState ({
+				query:term
+			})
 
-      term = term.toLowerCase();  
+			let filtering = [...this.state.movieList].filter( 
+				(movie) => movie.fields.title.toLowerCase().includes(term)
+			)
+		
+			this.setState({
+				filteredAndSortedMovieList:filtering
+			})
+		}
+		else {
+			this.setState ({
+				query:'',
+				filteredAndSortedMovieList: this.state.movieList
+			})
+		}
+	}
 
-      this.setState ({
-        query:term
-      })
+	sortByEpisode = () => {
 
-      let searchingResults = this.state.movieList.filter( (movie) => movie.fields.title.toLowerCase().includes(term))
+		let sortedByEpisode = [...this.state.movieList].sort((movie1,movie2) => movie1.fields.episode_id - movie2.fields.episode_id)
 
-      this.setState({
-        movieList:searchingResults
-      })
+		this.setState({
+			filteredAndSortedMovieList: sortedByEpisode
+		}) 
+	}
 
-    } else {
-      this.setState ({
-        query:'',
-        movieList: defaultMovies
-      })
-    }
-  }
+	sortByYear = () => {
 
-  sortByEpisode = () => {
+		let sortedByYear = [...this.state.movieList].sort(
+			(movie1,movie2) => {
+				let dateA= new Date(movie1.fields.release_date)
+				let dateB= new Date(movie2.fields.release_date)
+				return dateA - dateB
+			}
+		)
 
-    this.state.movieList.sort((movie1,movie2) => movie1.fields.episode_id - movie2.fields.episode_id)
+		this.setState({
+			filteredAndSortedMovieList: sortedByYear
+		}) 
+	}
 
-    this.setState({
-      movieList: this.state.movieList
-    }) 
-  }
-
-  sortByYear = () => {
-
-    this.state.movieList.sort(
-      (movie1,movie2) => {
-        let dateA= new Date(movie1.fields.release_date)
-        let dateB= new Date(movie2.fields.release_date)
-        return dateA - dateB
-      }
-    )
-
-    this.setState({
-      movieList: this.state.movieList
-    }) 
-  }
-
-  render() {
-    return (
-      <div className="App">
-        <Search 
-          sortByEpisode={this.sortByEpisode}
-          sortByYear={this.sortByYear}
-          searchingFor={this.searchingFor}
-        />
-        <div className="container">
-          <ListView 
-            movieList={this.state.movieList} 
-            movieSelection={this.movieSelection} 
-          />
-          <Movie 
-            selectedMovie={this.state.selectedMovie} 
-          />
-        </div>        
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="App">
+				<Search 
+					sortByEpisode={this.sortByEpisode}
+					sortByYear={this.sortByYear}
+					searchingFor={this.searchingFor}
+				/>
+				<div className="container">
+					<ListView 
+						filteredAndSortedMovieList={this.state.filteredAndSortedMovieList}
+						movieList={this.state.movieList} 
+						movieSelection={this.movieSelection} 
+					/>
+					<Movie 
+						selectedMovie={this.state.selectedMovie} 
+					/>
+				</div>        
+			</div>
+		);
+	}
 }
 
 export default App;
