@@ -7,14 +7,14 @@ class ListView extends Component {
 		return (
 			<div className="list-container">
 				<ul className="list" >
-					{this.props.movieList.map( (movie, index) => (
+					{this.props.filteredAndSortedMovieList.map( (movie, index) => (
 						<li key={index} onClick={() => this.props.movieSelection(index)}> 
 							<p> 
 								<span className='episode_id'>EPISODE {movie.fields.episode_id}</span>
 								<span className='movie-title'>{movie.fields.title}</span>
 								<span className='release_date'>{movie.fields.release_date}</span> 
-							</p>     				
-						</li> 
+							</p>
+						</li>
 					))}
 				</ul>
 			</div>
