@@ -4,26 +4,26 @@ import './App.css';
 class Dropdown extends Component {
 
 	 constructor(props){
-    super(props)
+		super(props)
 
-    this.state = {
-      isDropdownOpen: false
-    }
-  }
+		this.state = {
+			isDropdownOpen: false
+		}
+	}
 
 	toggleDropdown = () => {
-    
-    if (this.state.isDropdownOpen){
-      this.setState({
-        isDropdownOpen:false
-      })
+		
+		if (this.state.isDropdownOpen){
+			this.setState({
+				isDropdownOpen:false
+			})
 
-    } else {
-      this.setState({
-        isDropdownOpen:true
-      })
-    }
-  }
+		} else {
+			this.setState({
+				isDropdownOpen:true
+			})
+		}
+	}
 
 	render() {
 		let toggleDropdown = this.state.isDropdownOpen ? "block" : "none";
@@ -36,10 +36,10 @@ class Dropdown extends Component {
 						<p> Sort by </p>
 						<button className='close-button' onClick={() => this.toggleDropdown()}> X </button>
 					</div>
-				  <li onClick={() => {this.props.sortByEpisode(); this.toggleDropdown()} }> Episode </li>
-  				<li onClick={() => {this.props.sortByYear(); this.toggleDropdown()} }> Year </li>
-  			</ul>
-  		</div>			
+					<li onClick={() => {this.props.sortByEpisode(); this.toggleDropdown()} }> Episode </li>
+					<li onClick={() => {this.props.sortByYear(); this.toggleDropdown()} }> Year </li>
+				</ul>
+			</div>			
 		);
 	}
 }
