@@ -9,8 +9,8 @@ class Search extends Component {
 		return (
 			<div className="header-container"> 
 				<Dropdown 
-		      sortByEpisode={this.props.sortByEpisode}
-          sortByYear={this.props.sortByYear}	
+					sortByEpisode={this.props.sortByEpisode}
+					sortByYear={this.props.sortByYear}	
 				/>
 				<div className="search-movies-container">
 					<i className="fas fa-search"></i>
@@ -19,7 +19,7 @@ class Search extends Component {
 						type="text" 
 						placeholder="Type to search..."
 						value={this.props.query}
-		       	onChange={(event) => this.props.searchingFor(event.target.value)}
+						onChange={(event) => this.props.searchingFor(event.target.value)}
 					/>
 				</div>
 			</div>
