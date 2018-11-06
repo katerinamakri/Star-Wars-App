@@ -9,12 +9,6 @@ To get started developing right away:
 * install all project dependencies with `npm install`
 * start the development server with `npm start`
 
-## About
-
-
-## Future Improvements
-- [ ] Unit-test
-
 ## Dependencies
 * [Create React App](https://github.com/facebook/create-react-app)
 * [Star Wars Api](https://star-wars-api.herokuapp.com/films)
