@@ -2,6 +2,8 @@
 
 This is a simple web application created with React.js. On the left side of browser, the user can select a Star Wars movie and the movie information will appear on the right side.
 
+[Live Demo](https://katerinamakri.github.io/Star-Wars-App/)
+
 ## How to get started
 To get started developing right away:
 
